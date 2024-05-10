@@ -19,3 +19,10 @@ const sendGameDeleted = (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.game));
 };
+
+module.exports = {
+  sendGameCreated,
+  sendGameById,
+  sendGameUpdated,
+  sendGameDeleted,
+};
