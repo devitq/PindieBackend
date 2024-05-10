@@ -2,6 +2,7 @@
 
 const sendCategoryCreated = (req, res) => {
   res.setHeader("Content-Type", "application/json");
+  res.status(201);
   res.end(JSON.stringify(req.category));
 };
 
