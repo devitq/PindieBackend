@@ -1,5 +1,7 @@
 // middlewares/users.js
 
+const bcrypt = require("bcryptjs");
+
 const users = require("../models/user");
 
 const createUser = async (req, res, next) => {
@@ -65,6 +67,17 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
+const hashPassword = async (req, res, next) => {
+  try {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(req.body.password, salt);
+    req.body.password = hash;
+    next();
+  } catch (error) {
+    res.status(400).send({ message: "Ошибка хеширования пароля" });
+  }
+};
+
 const checkEmptyNameAndEmailAndPassword = async (req, res, next) => {
   if (!req.body.username || !req.body.email || !req.body.password) {
     res.setHeader("Content-Type", "application/json");
@@ -109,6 +122,7 @@ module.exports = {
   findUserById,
   updateUser,
   deleteUser,
+  hashPassword,
   checkEmptyNameAndEmailAndPassword,
   checkEmptyNameAndEmail,
   checkIsUserExists,

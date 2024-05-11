@@ -8,6 +8,7 @@ const {
   findUserById,
   updateUser,
   deleteUser,
+  hashPassword,
   checkEmptyNameAndEmailAndPassword,
   checkEmptyNameAndEmail,
   checkIsUserExists,
@@ -25,6 +26,7 @@ usersRouter.post(
   checkEmptyNameAndEmailAndPassword,
   findAllUsers,
   checkIsUserExists,
+  hashPassword,
   createUser,
   sendUserCreated,
 );
