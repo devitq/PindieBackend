@@ -2,7 +2,7 @@
 
 const categoriesRouter = require("express").Router();
 
-const { checkAuth } = require("../middlewares/auth.js");
+const { Authorize } = require("../middlewares/auth.js");
 
 const {
   createCategory,
@@ -23,7 +23,7 @@ const {
 
 categoriesRouter.post(
   "/categories",
-  checkAuth,
+  Authorize,
   checkEmptyName,
   findAllCategories,
   checkIsCategoryExists,
@@ -34,7 +34,7 @@ categoriesRouter.get("/categories", findAllCategories, sendAllCategories);
 categoriesRouter.get("/categories/:id", findCategoryById, sendCategoryById);
 categoriesRouter.put(
   "/categories/:id",
-  checkAuth,
+  Authorize,
   checkEmptyName,
   findAllCategories,
   checkIsCategoryExists,
@@ -43,7 +43,7 @@ categoriesRouter.put(
 );
 categoriesRouter.delete(
   "/categories/:id",
-  checkAuth,
+  Authorize,
   deleteCategory,
   sendCategoryDeleted,
 );

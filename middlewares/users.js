@@ -5,10 +5,7 @@ const bcrypt = require("bcryptjs");
 const users = require("../models/user");
 
 const createUser = async (req, res, next) => {
-  console.log("POST /users");
-
   try {
-    console.log(req.body);
     req.user = await users.create(req.body);
     next();
   } catch (error) {
@@ -20,16 +17,12 @@ const createUser = async (req, res, next) => {
 };
 
 const findAllUsers = async (req, res, next) => {
-  console.log("GET /users");
-
   req.usersArray = await users.find({}, { password: 0 });
 
   next();
 };
 
 const findUserById = async (req, res, next) => {
-  console.log("GET /users/:id");
-
   try {
     req.user = await users.findById(req.params.id, { password: 0 });
     next();
@@ -40,13 +33,10 @@ const findUserById = async (req, res, next) => {
 };
 
 const updateUser = async (req, res, next) => {
-  console.log("PUT /users/:id");
-
   try {
     req.user = await users.findByIdAndUpdate(req.params.id, req.body);
     next();
   } catch (error) {
-    console.log(error);
     res
       .status(400)
       .send({ message: `Ошибка обновления пользователя: ${error}` });
@@ -54,8 +44,6 @@ const updateUser = async (req, res, next) => {
 };
 
 const deleteUser = async (req, res, next) => {
-  console.log("DELETE /users/:id");
-
   try {
     req.user = await users.findByIdAndDelete(req.params.id);
     next();

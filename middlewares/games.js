@@ -3,10 +3,7 @@
 const games = require("../models/game");
 
 const createGame = async (req, res, next) => {
-  console.log("POST /games");
-
   try {
-    console.log(req.body);
     req.game = await games.create(req.body);
     next();
   } catch (error) {
@@ -36,8 +33,6 @@ const findAllGames = async (req, res, next) => {
 };
 
 const findGameById = async (req, res, next) => {
-  console.log("GET /games/:id");
-
   try {
     req.game = await games
       .findById(req.params.id)
@@ -50,20 +45,15 @@ const findGameById = async (req, res, next) => {
 };
 
 const updateGame = async (req, res, next) => {
-  console.log("PUT /games/:id");
-
   try {
     req.game = await games.findByIdAndUpdate(req.params.id, req.body);
     next();
   } catch (error) {
-    console.log(error);
     res.status(400).send({ message: "Ошибка обновления игры" });
   }
 };
 
 const deleteGame = async (req, res, next) => {
-  console.log("DELETE /games/:id");
-
   try {
     req.game = await games.findByIdAndDelete(req.params.id);
     next();

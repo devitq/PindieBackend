@@ -30,9 +30,9 @@ const login = (req, res) => {
     });
 };
 
-const sendProfile = (req, res, next) => {
+const sendMe = (req, res, next) => {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.user));
 };
 
-module.exports = { login, sendProfile };
+module.exports = { login, sendMe };

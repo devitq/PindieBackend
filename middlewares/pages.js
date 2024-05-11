@@ -1,12 +1,14 @@
-// middlewares/auth.js
+// middlewares/pages.js
 
 const jwt = require("jsonwebtoken");
 
 const users = require("../models/user");
 
-const { SECRET_KEY } = require("../config");
+const { SECRET_KEY, LOGIN_PATH } = require("../config");
 
-const Authorize = async (req, res, next) => {
+const AuthorizePages = async (req, res, next) => {
+  const onLoginPage = req.path === LOGIN_PATH;
+
   let token;
 
   const { authorization } = req.headers;
@@ -18,17 +20,22 @@ const Authorize = async (req, res, next) => {
   }
 
   if (!token) {
-    return res.status(401).send({ message: "Необходима авторизация" });
+    if (!onLoginPage) {
+      res.redirect(LOGIN_PATH);
+      return;
+    }
   }
 
   try {
     req.token = await jwt.verify(token, SECRET_KEY);
     req.user = await users.findById(req.token._id, { password: 0 });
   } catch (err) {
-    return res.status(401).send({ message: "Необходима авторизация" });
+    if (!onLoginPage) {
+      res.redirect(LOGIN_PATH);
+      return;
+    }
   }
-
   next();
 };
 
-module.exports = { Authorize };
+module.exports = { AuthorizePages };

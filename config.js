@@ -6,5 +6,6 @@ const DB_URL =
 const CORS = ["https://practicum.yandex.ru", "https://students-projects.ru"];
 const SECRET_KEY = "some-secret-key";
 const JWT_EXPIRES_IN = "1d";
+const LOGIN_PATH = "/";
 
-module.exports = { PORT, DB_URL, CORS, SECRET_KEY, JWT_EXPIRES_IN };
+module.exports = { PORT, DB_URL, CORS, SECRET_KEY, JWT_EXPIRES_IN, LOGIN_PATH };
