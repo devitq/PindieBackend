@@ -304,6 +304,22 @@ button {
   z-index: 2;
 }
 
+.auth-submit-button {
+  margin-top: 1em;
+}
+
+.logout-button {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: #333;
+  color: #fff;
+}
+
+.logout-button:hover {
+  opacity: 0.8;
+}
+
 @media (width <= 600px) {
   .games-list li article {
     grid-template-columns: 1fr;

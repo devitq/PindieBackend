@@ -6,7 +6,7 @@ import {
 } from "./requests.js";
 const buttons = [...document.querySelectorAll(".call-dialog-button")];
 const dialog = document.querySelector(".form-dialog");
-const closeButton = dialog.querySelector(".close-dialog-button");
+const closeButton = dialog?.querySelector(".close-dialog-button");
 
 let dialogOpened = false;
 
@@ -53,4 +53,4 @@ buttons.forEach((button) => {
   });
 });
 
-closeButton.addEventListener("click", closeDialog);
+closeButton && closeButton.addEventListener("click", closeDialog);

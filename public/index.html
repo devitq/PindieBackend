@@ -3,201 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin</title>
+    <title>Auth</title>
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
     <section>
-      <h2 class="section-title">
-        <span>Игры</span
-        ><button
-          class="button instance-button add-game-button call-dialog-button"
-        >
-          Добавить игру
-        </button>
-      </h2>
-      <ul class="games-list"></ul>
-    </section>
-    <section>
-      <h2 class="section-title">
-        <span>Категории</span
-        ><button
-          class="button instance-button add-category-button call-dialog-button"
-        >
-          Добавить категорию
-        </button>
-      </h2>
-      <ul class="categories-list"></ul>
-    </section>
-    <section>
-      <h2 class="section-title">
-        <span>Пользователи</span
-        ><button
-          class="button instance-button add-user-button call-dialog-button"
-        >
-          Добавить пользователя
-        </button>
-      </h2>
-      <ul class="users-list"></ul>
-    </section>
-
-    <dialog class="form-dialog" id="form-dialog">
-      <button class="close-dialog-button">Закрыть</button>
-      <div class="form-container"></div>
-    </dialog>
-
-    <dialog class="tooltip"></dialog>
-
-    <template id="game-list-item">
-      <li class="game-list-item">
-        <article class="game-card">
-          <button class="button instance-button close-item">Закрыть</button>
-          <div>
-            <img src="" alt="" />
-            <div class="game-controls">
-              <input
-                type="url"
-                class="textfield image-url-input"
-                placeholder="Ссылка на изображение"
-              />
-              <button class="button instance-button edit-game-button">
-                Редактировать игру
-              </button>
-              <button class="button instance-button delete-game-button">
-                Удалить игру
-              </button>
-            </div>
-          </div>
-
-          <div class="description">
-            <h3></h3>
-            <p class="bold-text">Описание:</p>
-            <p class="text"></p>
-            <p class="bold-text">Разработчик:</p>
-            <p class="developer"></p>
-            <p class="link">
-              <span class="bold-text">Ссылка:</span>
-              <a href="" target="_blank"></a>
-            </p>
-            <p class="category bold-text">Категории:</p>
-            <ul class="categories"></ul>
-            <p class="users bold-text">Проголосовали:</p>
-            <ul class="votes"></ul>
-          </div>
-        </article>
-      </li>
-    </template>
-
-    <template id="category-list-item">
-      <li class="category-list-item">
-        <button class="close-item button instance-button">Закрыть</button>
-        <div>
-          <p class="name"></p>
-          <button class="button icon-button edit-category-button">
-            <span class="visually-hidden">Редактировать</span>
-            <svg><use href="./svg/icons.svg#edit"></use></svg>
-          </button>
-          <button class="button icon-button delete-category-button">
-            <span class="visually-hidden">Удалить</span>
-            <svg><use href="./svg/icons.svg#delete"></use></svg>
-          </button>
-        </div>
-      </li>
-    </template>
-
-    <template id="user-list-item">
-      <li class="user-list-item">
-        <button class="close-item button instance-button">Закрыть</button>
-        <div>
-          <p class="name"></p>
-          <p class="email"></p>
-          <button class="button icon-button edit-user-button">
-            <span class="visually-hidden">Редактировать</span>
-            <svg><use href="./svg/icons.svg#edit"></use></svg>
-          </button>
-          <button class="button icon-button delete-user-button">
-            <span class="visually-hidden">Удалить</span>
-            <svg><use href="./svg/icons.svg#delete"></use></svg>
-          </button>
-        </div>
-      </li>
-    </template>
-
-    <template id="categories-checkbox">
-      <label>
-        <input type="checkbox" name="game-category" value="" />
-        <span></span>
-      </label>
-    </template>
-
-    <!-- Темплейты форм -->
-
-    <template class="add-game-form">
-      <form class="form form--game">
-        <label class="form-label">
-          <span class="form-label-text">Название игры</span>
-          <input type="text" name="title" class="textfield" />
-        </label>
-        <label class="form-label">
-          <span class="form-label-text">Описание игры</span>
-          <textarea
-            name="description"
-            cols="30"
-            rows="10"
-            class="textarea"
-          ></textarea>
-        </label>
-        <label class="form-label">
-          <span class="form-label-text">Разработчик</span>
-          <input type="text" name="developer" class="textfield" />
-        </label>
-        <label class="form-label">
-          <span class="form-label-text">Ссылка на обложку</span>
-          <input type="url" name="image" class="textfield" />
-        </label>
-        <label class="form-label">
-          <span class="form-label-text">Ссылка на игру</span>
-          <input type="url" name="link" class="textfield" />
-        </label>
-        <div class="categories-fields">
-          <h3>Категории</h3>
-        </div>
-        <button type="submit" class="button instance-button">
-          Добавить игру
-        </button>
-      </form>
-    </template>
-    <template class="add-category-form">
-      <form class="form form--category">
-        <label class="form-label">
-          <span class="form-label">Название категории</span>
-          <input type="text" name="name" class="textfield" />
-        </label>
-        <button type="submit" class="button instance-button">
-          Добавить категорию
-        </button>
-      </form>
-    </template>
-    <template class="add-user-form">
-      <form class="form form--user">
-        <label class="form-label">
-          <span class="form-label">Имя пользователя</span>
-          <input type="text" name="username" class="textfield" />
-        </label>
-        <label class="form-label">
-          <span class="form-label">Email</span>
+      <form class="auth-form">
+        <h1>Авторизация</h1>
+        <label>
+          <span>E-mail</span>
           <input type="email" name="email" class="textfield" />
         </label>
-        <label class="form-label">
-          <span class="form-label">Пароль</span>
+        <label>
+          <span>Пароль</span>
           <input type="password" name="password" class="textfield" />
         </label>
-        <button type="submit" class="button instance-button">
-          Добавить пользователя
+        <button type="submit" class="button instance-button auth-submit-button">
+          Войти
         </button>
       </form>
-    </template>
-    <script src="./scripts/script.js" type="module"></script>
-    <script src="./scripts/dialogs-controller.js" type="module"></script>
+    </section>
+    <dialog class="tooltip"></dialog>
+    <script src="./scripts/login.js" type="module"></script>
   </body>
 </html>

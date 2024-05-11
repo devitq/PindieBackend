@@ -40,7 +40,7 @@ const prepareFormData = (form) => {
 const postNewGame = async (form) => {
   const object = prepareFormData(form);
   try {
-    const response = await postData("/games", object);
+    const response = await postData("/api/games", object);
     if (response instanceof Error) {
       throw new Error(response.message);
     }
@@ -54,7 +54,7 @@ const postNewGame = async (form) => {
 const postNewCategory = async (form) => {
   const object = prepareFormData(form);
   try {
-    const response = await postData("/categories", object);
+    const response = await postData("/api/categories", object);
     if (response instanceof Error) {
       throw new Error(response.message);
     }
@@ -68,7 +68,7 @@ const postNewCategory = async (form) => {
 const postNewUser = async (form) => {
   const object = prepareFormData(form);
   try {
-    const response = await postData("/users", object);
+    const response = await postData("/api/users", object);
     if (response instanceof Error) {
       throw new Error(response.message);
     }
@@ -149,7 +149,7 @@ const removeUserFormListeners = () => {
 };
 
 const deleteGame = async (id) => {
-  const response = await deleteData(`/games/${id}`);
+  const response = await deleteData(`/api/games/${id}`);
   return response;
 };
 
@@ -169,7 +169,7 @@ const addDeleteGameListeners = async () => {
 };
 
 const deleteCategory = async (id) => {
-  const response = await deleteData(`/categories/${id}`);
+  const response = await deleteData(`/api/categories/${id}`);
   return response;
 };
 
@@ -189,7 +189,7 @@ const addDeleteCategoryListeners = async () => {
 };
 
 const deleteUsers = async (id) => {
-  const response = await deleteData(`/users/${id}`);
+  const response = await deleteData(`/api/users/${id}`);
   return response;
 };
 
@@ -212,7 +212,7 @@ const addDeleteUsersListeners = async () => {
 
 const putGame = async (id) => {
   try {
-    const response = await putData(`/games/${id}`, currentState);
+    const response = await putData(`/api/games/${id}`, currentState);
     if (response instanceof Error) {
       throw new Error(response.message);
     }
@@ -252,7 +252,10 @@ const addPutGameListeners = () => {
 
 const putCategory = async (id) => {
   try {
-    const response = await putData(`/categories/${id}`, currentCategoryState);
+    const response = await putData(
+      `/api/categories/${id}`,
+      currentCategoryState,
+    );
     if (response instanceof Error) {
       throw new Error(response.message);
     }
@@ -292,7 +295,7 @@ const addPutCategoryListeners = async () => {
 
 const putUser = async (id) => {
   try {
-    const response = await putData(`/users/${id}`, userCurrentState);
+    const response = await putData(`/api/users/${id}`, userCurrentState);
     if (response instanceof Error) {
       throw new Error(response.message);
     }
