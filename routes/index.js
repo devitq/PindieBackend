@@ -1,11 +1,7 @@
 // routes/index.js
 
-const categoriesRouter = require("./categories");
-const gamesRouter = require("./games");
-const usersRouter = require("./users");
+const apiRouter = require("./api");
 
 module.exports = {
-  categoriesRouter,
-  gamesRouter,
-  usersRouter
+  apiRouter,
 };

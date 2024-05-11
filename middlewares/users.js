@@ -93,13 +93,11 @@ const checkIsUserExists = async (req, res, next) => {
   });
   if (isInArray) {
     res.setHeader("Content-Type", "application/json");
-    res
-      .status(400)
-      .send(
-        JSON.stringify({
-          message: "Пользователь с таким email уже существует",
-        }),
-      );
+    res.status(400).send(
+      JSON.stringify({
+        message: "Пользователь с таким email уже существует",
+      }),
+    );
   } else {
     next();
   }
