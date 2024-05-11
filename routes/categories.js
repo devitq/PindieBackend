@@ -25,7 +25,7 @@ categoriesRouter.post(
   findAllCategories,
   checkIsCategoryExists,
   createCategory,
-  sendCategoryCreated
+  sendCategoryCreated,
 );
 categoriesRouter.get("/categories", findAllCategories, sendAllCategories);
 categoriesRouter.get("/categories/:id", findCategoryById, sendCategoryById);
@@ -35,7 +35,7 @@ categoriesRouter.put(
   findAllCategories,
   checkIsCategoryExists,
   updateCategory,
-  sendCategoryUpdated
+  sendCategoryUpdated,
 );
 categoriesRouter.delete("/categories/:id", deleteCategory, sendCategoryDeleted);
 

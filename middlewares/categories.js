@@ -75,7 +75,10 @@ const checkEmptyName = async (req, res, next) => {
 
 const checkIsCategoryExists = async (req, res, next) => {
   const isInArray = req.categoriesArray.find((category) => {
-    return req.body.name === category.name && category._id.toString() !== req.params.id;
+    return (
+      req.body.name === category.name &&
+      category._id.toString() !== req.params.id
+    );
   });
 
   if (isInArray) {
@@ -83,7 +86,7 @@ const checkIsCategoryExists = async (req, res, next) => {
     res.status(400).send(
       JSON.stringify({
         message: "Категория с таким названием уже существует",
-      })
+      }),
     );
   } else {
     next();

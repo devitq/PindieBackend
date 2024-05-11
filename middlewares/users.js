@@ -41,14 +41,13 @@ const updateUser = async (req, res, next) => {
   console.log("PUT /users/:id");
 
   try {
-    req.user = await users.findByIdAndUpdate(
-      req.params.id,
-      req.body
-    );
+    req.user = await users.findByIdAndUpdate(req.params.id, req.body);
     next();
   } catch (error) {
     console.log(error);
-    res.status(400).send({ message: `Ошибка обновления пользователя: ${error}` });
+    res
+      .status(400)
+      .send({ message: `Ошибка обновления пользователя: ${error}` });
   }
 };
 
@@ -88,14 +87,18 @@ const checkEmptyNameAndEmail = async (req, res, next) => {
 
 const checkIsUserExists = async (req, res, next) => {
   const isInArray = req.usersArray.find((user) => {
-    return req.body.email === user.email && user._id.toString() !== req.params.id;
+    return (
+      req.body.email === user.email && user._id.toString() !== req.params.id
+    );
   });
   if (isInArray) {
     res.setHeader("Content-Type", "application/json");
     res
       .status(400)
       .send(
-        JSON.stringify({ message: "Пользователь с таким email уже существует" })
+        JSON.stringify({
+          message: "Пользователь с таким email уже существует",
+        }),
       );
   } else {
     next();

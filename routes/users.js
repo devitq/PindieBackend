@@ -26,7 +26,7 @@ usersRouter.post(
   findAllUsers,
   checkIsUserExists,
   createUser,
-  sendUserCreated
+  sendUserCreated,
 );
 usersRouter.get("/users", findAllUsers, sendAllUsers);
 usersRouter.get("/users/:id", findUserById, sendUserById);
@@ -36,7 +36,7 @@ usersRouter.put(
   findAllUsers,
   checkIsUserExists,
   updateUser,
-  sendUserUpdated
+  sendUserUpdated,
 );
 usersRouter.delete("/users/:id", deleteUser, sendUserDeleted);
 

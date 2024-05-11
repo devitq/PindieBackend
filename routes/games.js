@@ -28,7 +28,7 @@ gamesRouter.post(
   findAllGames,
   checkIsGameExists,
   createGame,
-  sendGameCreated
+  sendGameCreated,
 );
 gamesRouter.get("/games", findAllGames, sendAllGames);
 gamesRouter.get("/games/:id", findGameById, sendGameById);
@@ -41,7 +41,7 @@ gamesRouter.put(
   findAllGames,
   checkIsGameExists,
   updateGame,
-  sendGameUpdated
+  sendGameUpdated,
 );
 gamesRouter.delete("/games/:id", deleteGame, sendGameDeleted);
 

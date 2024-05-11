@@ -87,14 +87,12 @@ const checkIfUsersAreSafe = async (req, res, next) => {
     return;
   } else {
     res.setHeader("Content-Type", "application/json");
-    res
-      .status(400)
-      .send(
-        JSON.stringify({
-          message:
-            "Нельзя удалять пользователей или добавлять больше одного пользователя",
-        })
-      );
+    res.status(400).send(
+      JSON.stringify({
+        message:
+          "Нельзя удалять пользователей или добавлять больше одного пользователя",
+      }),
+    );
   }
 };
 
@@ -111,7 +109,9 @@ const checkIfCategoriesAvaliable = async (req, res, next) => {
 
 const checkIsGameExists = async (req, res, next) => {
   const isInArray = req.gamesArray.find((game) => {
-    return req.body.title === game.titlev && game._id.toString() !== req.params.id;
+    return (
+      req.body.title === game.titlev && game._id.toString() !== req.params.id
+    );
   });
 
   if (isInArray) {
@@ -119,7 +119,7 @@ const checkIsGameExists = async (req, res, next) => {
     res
       .status(400)
       .send(
-        JSON.stringify({ message: "Игра с таким названием уже существует" })
+        JSON.stringify({ message: "Игра с таким названием уже существует" }),
       );
   } else {
     next();
