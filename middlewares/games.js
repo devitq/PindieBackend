@@ -15,14 +15,24 @@ const createGame = async (req, res, next) => {
 };
 
 const findAllGames = async (req, res, next) => {
-  console.log("GET /games");
+  const categoryNames = req.query["categories.name"];
 
-  req.gamesArray = await games.find({}).populate("categories").populate({
-    path: "users",
-    select: "-password",
-  });
-
-  next();
+  if (categoryNames && Array.isArray(categoryNames)) {
+    const gamesArray = await games.findGameByCategories(categoryNames);
+    req.gamesArray = gamesArray;
+    next();
+  } else if (categoryNames) {
+    const gamesArray = await games.findGameByCategories([categoryNames]);
+    req.gamesArray = gamesArray;
+    next();
+  } else {
+    const gamesArray = await games.find({}).populate("categories").populate({
+      path: "users",
+      select: "-password",
+    });
+    req.gamesArray = gamesArray;
+    next();
+  }
 };
 
 const findGameById = async (req, res, next) => {
