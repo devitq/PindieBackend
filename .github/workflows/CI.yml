@@ -5,15 +5,8 @@ on:
   pull_request:
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
-
-    services:
-      mongodb:
-        image: mongo
-        ports:
-          - 27017:27017
-        options: --name mongodb
 
     steps:
       - name: Checkout repository
@@ -22,29 +15,54 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "22"
+          node-version: "14" # Use the appropriate node version here
 
       - name: Install dependencies
         run: npm install
 
       - name: Linting
         run: npm run lint
-      
+
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:4.4.6
+        env:
+          MONGO_INITDB_ROOT_USERNAME: admin
+          MONGO_INITDB_ROOT_PASSWORD: admin
+          MONGO_INITDB_DATABASE: pindie
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd mongo
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14" # Use the appropriate node version here
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Set DB_URL environment variable
-        run: echo "DB_URL=mongodb://localhost:27017/pindie" >> $GITHUB_ENV
-      
+        run: echo "DB_URL=mongodb://admin:admin@localhost:27017/pindie" >> $GITHUB_ENV
+
       - name: Start MongoDB
         run: sleep 10s
-      
-      - name: Create pindie database
-        run: mongo --eval "db.getSiblingDB('pindie')"
 
-      - name: 'Test server'
+      - name: Test server
         uses: miguelteixeiraa/action-run-in-background@v1
         with:
-          script: |
-            npm start
-
+          script: npm start
           readiness-script: |
             # check if whatever is it to run, is ready
             if curl -sSf http://localhost:3000/api/ping > /dev/null; then
@@ -53,6 +71,5 @@ jobs:
                 echo "curl request failed."
                 exit 1
             fi
-
           shell: bash
           timeout: 30
