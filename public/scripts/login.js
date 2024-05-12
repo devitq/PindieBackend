@@ -17,6 +17,12 @@ form &&
 				throw new Error((await response.json()).message);
 			}
 			const result = await response.json();
+
+			if (!result.admin) {
+				showTooltip("Недостаточно прав");
+				return;
+			}
+
 			document.cookie = `jwt=${result.jwt}`;
 			window.location.href = "/admin";
 		} catch (error) {
@@ -31,3 +37,14 @@ logoutButton &&
 		document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 		window.location.href = "/";
 	});
+
+window.onload = function () {
+	var urlParams = new URLSearchParams(window.location.search);
+	var notAdminParam = urlParams.get("not_admin");
+	if (notAdminParam === "true") {
+		showTooltip("Недостаточно прав");
+		var url = new URL(window.location.href);
+		url.searchParams.delete("not_admin");
+		history.replaceState({}, document.title, url.pathname + url.search);
+	}
+};
