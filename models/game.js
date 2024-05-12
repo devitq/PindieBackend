@@ -54,4 +54,24 @@ gameSchema.statics.findGameByCategories = async function (categories) {
 	return games.filter((game) => game.categories.length > 0);
 };
 
+gameSchema.statics.vote = async function (game, user) {
+	try {
+		const userExists = game.users.some((user) => user._id.equals(userId));
+
+		if (!userExists) {
+			game.users.push(user._id);
+			await game.save();
+			return {
+				success: true,
+			};
+		} else {
+			return { success: true };
+		}
+	} catch (error) {
+		return {
+			success: false,
+		};
+	}
+};
+
 module.exports = mongoose.model("game", gameSchema);

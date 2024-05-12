@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-    "start": "pm2 start index.js",
+    "start": "pm2 start index.js -f",
 		"dev": "nodemon index.js"
 	},
 	"author": "ITQ",

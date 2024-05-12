@@ -37,7 +37,11 @@ const findGameById = async (req, res, next) => {
 		req.game = await games
 			.findById(req.params.id)
 			.populate("categories")
-			.populate("users");
+			.populate("users")
+			.populate({
+				path: "users",
+				select: "-password",
+			});
 		next();
 	} catch (error) {
 		res.status(404).send({ message: "Игра не найдена" });
@@ -126,6 +130,24 @@ const checkIsGameExists = async (req, res, next) => {
 	}
 };
 
+const voteGame = async (req, res, next) => {
+	try {
+		req.game = await games.findById(req.params.id).populate("users");
+
+		const { success } = await games.vote(req.game, req.user);
+
+		if (!success) {
+			res.setHeader("Content-Type", "application/json");
+			res.status(400).send(JSON.stringify({ message: "Ошибка при голосовании" }));
+		}
+
+		next();
+	} catch (error) {
+		res.setHeader("Content-Type", "application/json");
+		res.status(404).send(JSON.stringify({ message: "Игра не найдена" }));
+	}
+};
+
 module.exports = {
 	createGame,
 	findAllGames,
@@ -136,4 +158,5 @@ module.exports = {
 	checkIfUsersAreSafe,
 	checkIfCategoriesAvaliable,
 	checkIsGameExists,
+	voteGame,
 };
