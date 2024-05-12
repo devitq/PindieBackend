@@ -1,0 +1,57 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
+        options: --name mongodb
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Linting
+        run: npm run lint
+      
+      - name: Set DB_URL environment variable
+        run: echo "DB_URL=mongodb://localhost:27017/pindie" >> $GITHUB_ENV
+      
+      - name: Start MongoDB
+        run: sleep 10s
+      
+      - name: Create pindie database
+        run: mongo --eval "db.getSiblingDB('pindie')"
+
+      - name: Start server
+        run: npm start
+        background: true
+
+      - name: Wait for server to start
+        run: sleep 10s
+      
+      - name: Send ping request
+        run: curl http://localhost:3000/api/ping
+      
+      - name: Stop server
+        run: npm stop
