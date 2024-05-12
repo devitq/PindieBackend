@@ -2,7 +2,7 @@
 
 const PORT = 3000;
 const DB_URL =
-  "mongodb+srv://pindie:nqmQuBaiP2CSwU7G@cluster0.gqq4i1y.mongodb.net/pindie";
+	"mongodb+srv://pindie:nqmQuBaiP2CSwU7G@cluster0.gqq4i1y.mongodb.net/pindie";
 const CORS = ["https://practicum.yandex.ru", "https://students-projects.ru"];
 const SECRET_KEY = "some-secret-key";
 const JWT_EXPIRES_IN = "1d";
