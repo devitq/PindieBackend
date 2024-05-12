@@ -29,6 +29,13 @@ const AuthorizePages = async (req, res, next) => {
   try {
     req.token = await jwt.verify(token, SECRET_KEY);
     req.user = await users.findById(req.token._id, { password: 0 });
+
+    if (!req.user) {
+      if (!onLoginPage) {
+        res.redirect(LOGIN_PATH);
+        return;
+      }
+    }
   } catch (err) {
     if (!onLoginPage) {
       res.redirect(LOGIN_PATH);

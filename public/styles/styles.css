@@ -208,6 +208,10 @@ button {
   stroke: tomato;
 }
 
+.edit-button:hover svg {
+  stroke: darkgoldenrod !important;
+}
+
 .categories li {
   display: grid;
   gap: 1em;

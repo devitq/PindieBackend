@@ -24,6 +24,10 @@ const Authorize = async (req, res, next) => {
   try {
     req.token = await jwt.verify(token, SECRET_KEY);
     req.user = await users.findById(req.token._id, { password: 0 });
+    
+    if (!req.user) {
+      return res.status(401).send({ message: "Необходима авторизация" });
+    }
   } catch (err) {
     return res.status(401).send({ message: "Необходима авторизация" });
   }

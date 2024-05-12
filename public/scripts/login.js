@@ -18,7 +18,7 @@ form &&
       }
       const result = await response.json();
       document.cookie = `jwt=${result.jwt}`;
-      window.location.href = "/admin/dashboard";
+      window.location.href = "/admin";
     } catch (error) {
       showTooltip(error.message);
       return error;
