@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --name \"pindie\" -f | ./node_modules/.bin/bunyan",
+    "start": "pm2 describe pindie > /dev/null && pm2 stop pindie && pm2 delete pindie || true; pm2 start index.js --name \"pindie\" | ./node_modules/.bin/bunyan",
     "dev": "nodemon index.js | ./node_modules/.bin/bunyan",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "stop": "pm2 stop pindie"
+    "stop": "pm2 describe pindie > /dev/null && pm2 stop pindie && pm2 delete pindie"
   },
   "author": "ITQ",
   "license": "ISC",
