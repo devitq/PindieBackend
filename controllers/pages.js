@@ -6,7 +6,7 @@ const sendIndex = (req, res) => {
   if (req.user && req.user.admin) {
     return res.redirect("/admin");
   }
-  return res.sendFile(path.join(path.resolve(), "../public/index.html"));
+  return res.sendFile(path.join(path.resolve(), "./public/index.html"));
 };
 
 const sendDashboard = (req, res) => {
@@ -14,7 +14,7 @@ const sendDashboard = (req, res) => {
     return res.redirect("/?not_admin=true");
   }
   return res.sendFile(
-    path.join(path.resolve(), "../public/admin/dashboard.html")
+    path.join(path.resolve(), "./public/admin/dashboard.html")
   );
 };
 

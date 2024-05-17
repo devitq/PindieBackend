@@ -42,7 +42,7 @@ app.use(
   excludeHTML,
   apiRouter,
   pagesRouter,
-  express.static(path.join(path.resolve(), "public"))
+  express.static(path.join(path.resolve(), "./public"))
 );
 
 app.listen(PORT, () => {
