@@ -6,10 +6,10 @@ const users = require("../models/user");
 
 const { SECRET_KEY, JWT_EXPIRES_IN } = require("../config");
 
-const login = (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
 
-  users
+  await users
     .findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, SECRET_KEY, {
@@ -31,9 +31,27 @@ const login = (req, res) => {
     });
 };
 
+const signup = async (req, res) => {
+  const { username, email, password } = req.body;
+
+  try {
+    req.user = await users.create({ username: username, email: email, password: password, admin: false });
+  } catch {
+    res.setHeader("Content-Type", "application/json");
+    res
+      .status(400)
+      .send(JSON.stringify({ message: "Ошибка создания пользователя" }));
+
+    return;
+  }
+
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(req.user));
+}
+
 const sendMe = (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.user));
 };
 
-module.exports = { login, sendMe };
+module.exports = { login, signup, sendMe };

@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env pm2 describe pindie > NUL && pm2 stop pindie && pm2 delete pindie || true && pm2 start index.js --name pindie | bunyan",
+    "start": "cross-env pm2 describe pindie_backend > NUL && pm2 stop pindie_backend && pm2 delete pindie_backend || true && pm2 start index.js --name pindie | bunyan",
     "dev": "cross-env nodemon index.js | bunyan",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "stop": "cross-env pm2 describe pindie > NUL && pm2 stop pindie && pm2 delete pindie || true"
+    "stop": "cross-env pm2 describe pindie_backend > NUL && pm2 stop pindie_backend && pm2 delete pindie_backend || true"
   },
   "author": "ITQ",
   "license": "ISC",
