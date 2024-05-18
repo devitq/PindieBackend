@@ -1,0 +1,186 @@
+[{
+  "_id": {
+    "$oid": "66001dcb912e93034cf26a59"
+  },
+  "title": "Crystal Keeper",
+  "description": "Управляй боевым дроном, чтобы любой ценой защитить кристалл от враждебных космо-слизней.",
+  "developer": "Lonely Baobab",
+  "image": "https://code.s3.yandex.net/teens/pindie-games/cristal-keeper/cover.png",
+  "link": "https://code.s3.yandex.net/teens/pindie-games/cristal-keeper/game/index.html",
+  "users": [
+    {
+      "$oid": "6606b19ef99cd7a67132aaf6"
+    }
+  ],
+  "categories": [
+    {
+      "$oid": "65fd4eefee6f92e3d791d0d1"
+    },
+    {
+      "$oid": "65fd4ef6ee6f92e3d791d0d7"
+    },
+    {
+      "$oid": "660bc0a61755c9b3a8173553"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660d1bf8da026729e2699e9c"
+  },
+  "title": "G.U.N.N.E.R.",
+  "description": "Продержись как можно дольше, отбиваясь от врагов, которых будет становиться всё больше.",
+  "developer": "IDKWIAm",
+  "image": "https://code.s3.yandex.net/teens/pindie-games/gunner/cover.png",
+  "link": "https://code.s3.yandex.net/teens/pindie-games/gunner/game/index.html",
+  "users": [],
+  "categories": [
+    {
+      "$oid": "65fd4ae18dfd769ce313327d"
+    },
+    {
+      "$oid": "65fd4ae88dfd769ce3133282"
+    },
+    {
+      "$oid": "65fd4eefee6f92e3d791d0d1"
+    },
+    {
+      "$oid": "660bc0a61755c9b3a8173553"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660d1c63da026729e2699ea4"
+  },
+  "title": "Defence of Crystal",
+  "description": "Защищай магический кристалл от монстров и уничтожай кладбища, чтобы спасти Землю, которую поглотил мрак.",
+  "developer": "MastWe",
+  "image": "https://code.s3.yandex.net/teens/pindie-games/defence-of-crystal/cover.png",
+  "link": "https://code.s3.yandex.net/teens/pindie-games/defence-of-crystal/game/index.html",
+  "users": [],
+  "categories": [
+    {
+      "$oid": "65fd4ae18dfd769ce313327d"
+    },
+    {
+      "$oid": "65fd4ae88dfd769ce3133282"
+    },
+    {
+      "$oid": "660bc0a61755c9b3a8173553"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660d1cffda026729e2699eb3"
+  },
+  "title": "Go Away",
+  "description": "Управляй автомобилем, избегая аварий и перепрыгивая препятствия на пути к следующему уровню.",
+  "developer": "Mahisto",
+  "image": "https://code.s3.yandex.net/teens/pindie-games/go-away/cover.jpg",
+  "link": "https://code.s3.yandex.net/teens/pindie-games/go-away/game/index.html",
+  "users": [
+    {
+      "$oid": "6606b19ef99cd7a67132aaf6"
+    }
+  ],
+  "categories": [
+    {
+      "$oid": "65fd4ae18dfd769ce313327d"
+    },
+    {
+      "$oid": "660cee4e0fee465c0a9a03c6"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660d1d4cda026729e2699ebb"
+  },
+  "title": "Deep Under The Castle",
+  "description": "Прыгай по платформам и собирай ключи, чтобы выбраться из проклятого замка.",
+  "developer": "IDKWIAm",
+  "image": "https://code.s3.yandex.net/teens/pindie-games/Deep-Under-The-Castle/cover.png",
+  "link": "https://code.s3.yandex.net/teens/pindie-games/Deep-Under-The-Castle/index.html",
+  "users": [],
+  "categories": [
+    {
+      "$oid": "65fd4ae18dfd769ce313327d"
+    },
+    {
+      "$oid": "660bc0a61755c9b3a8173553"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660d1d97da026729e2699ec3"
+  },
+  "title": "Space Terror",
+  "description": "Лети как можно дальше в космическом пространстве, уничтожая всё на своём пути.",
+  "developer": "IDKWIAm",
+  "image": "https://code.s3.yandex.net/teens/pindie-games/space-terror/cover.png",
+  "link": "https://code.s3.yandex.net/teens/pindie-games/space-terror/game/index.html",
+  "users": [],
+  "categories": [
+    {
+      "$oid": "65fd4ae18dfd769ce313327d"
+    },
+    {
+      "$oid": "65fd4ae88dfd769ce3133282"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660d1de8da026729e2699ecb"
+  },
+  "title": "Dangeons'n'Caves. Prologue",
+  "description": "Безымянный герой исследует пещеры и подземелья, чтобы найти больше информации о себе.",
+  "developer": "F-Style",
+  "image": "https://code.s3.yandex.net/teens/pindie-games/dangeons-n-caves-prologue/cover.png",
+  "link": "https://code.s3.yandex.net/teens/pindie-games/dangeons-n-caves-prologue/game/index.html",
+  "users": [],
+  "categories": [
+    {
+      "$oid": "65fd4ae88dfd769ce3133282"
+    },
+    {
+      "$oid": "65fd4ef6ee6f92e3d791d0d7"
+    },
+    {
+      "$oid": "660bc0a61755c9b3a8173553"
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660d1e3ada026729e2699ed6"
+  },
+  "title": "Square Slayer",
+  "description": "Уворачивайся и отстреливайся от озлобленных квадратов и собирай жизни для перехода на следующий уровень.",
+  "developer": "niclan",
+  "image": "https://code.s3.yandex.net/teens/pindie-games/square-slayer/cover.png",
+  "link": "https://code.s3.yandex.net/teens/pindie-games/square-slayer/game/index.html",
+  "users": [],
+  "categories": [
+    {
+      "$oid": "65fd4ae18dfd769ce313327d"
+    },
+    {
+      "$oid": "65fd4ae88dfd769ce3133282"
+    },
+    {
+      "$oid": "660bc0a61755c9b3a8173553"
+    }
+  ],
+  "__v": 0
+}]
