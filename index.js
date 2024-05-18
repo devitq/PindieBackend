@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const path = require("path");
 
-const { DB_URL, PORT } = require("./config");
+const { MONGODB_CONN, PORT } = require("./config");
 
 const { cors } = require("./middlewares/cors");
 const { excludeHTML } = require("./middlewares/static");
@@ -17,7 +17,7 @@ const { apiRouter, pagesRouter } = require("./routes");
 
 const app = express();
 
-connectToDatabase(DB_URL);
+connectToDatabase(MONGODB_CONN);
 
 app.use(
   audit({
