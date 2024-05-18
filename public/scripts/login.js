@@ -23,7 +23,7 @@ form &&
         return;
       }
 
-      document.cookie = `jwt=${result.jwt}`;
+      document.cookie = `jwt=${result.jwt}; path=/;`;
       window.location.href = "/admin";
     } catch (error) {
       showTooltip(error.message);
@@ -35,7 +35,7 @@ const logoutButton = document.querySelector(".logout-button");
 logoutButton &&
   logoutButton.addEventListener("click", async () => {
     document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.href = "/";
+    window.location.href = "/admin/login";
   });
 
 window.onload = function () {
