@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 describe pindie > /dev/null && pm2 stop pindie && pm2 delete pindie || true; pm2 start index.js --name \"pindie\" | ./node_modules/.bin/bunyan",
-    "dev": "nodemon index.js | ./node_modules/.bin/bunyan",
+    "start": "cross-env pm2 describe pindie > NUL && pm2 stop pindie && pm2 delete pindie || true && pm2 start index.js --name pindie | bunyan",
+    "dev": "cross-env nodemon index.js | bunyan",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "stop": "pm2 describe pindie > /dev/null && pm2 stop pindie && pm2 delete pindie"
+    "stop": "cross-env pm2 describe pindie > NUL && pm2 stop pindie && pm2 delete pindie || true"
   },
   "author": "ITQ",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "body-parser": "^1.20.2",
     "bunyan": "^1.8.15",
     "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-requests-logger": "^4.0.0",
