@@ -9,7 +9,6 @@ const path = require("path");
 const { MONGODB_CONN, PORT } = require("./config");
 
 const { cors } = require("./middlewares/cors");
-const { excludeHTML } = require("./middlewares/static");
 const { connectToDatabase } = require("./database/connect");
 const { logger } = require("./logger");
 
@@ -39,7 +38,6 @@ app.use(
   cors,
   cookieParser(),
   bodyParser.json(),
-  excludeHTML,
   apiRouter,
   pagesRouter,
   express.static(path.join(path.resolve(), "./public"))
