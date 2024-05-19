@@ -4,11 +4,11 @@ const authRouter = require("express").Router();
 
 const { login, signup, sendMe } = require("../controllers/auth.js");
 const {
-    findAllUsers,
-    hashPassword,
-    checkEmptyNameAndEmailAndPassword,
-    checkIsUserExists,
-  } = require("../middlewares/users");
+  findAllUsers,
+  hashPassword,
+  checkEmptyNameAndEmailAndPassword,
+  checkIsUserExists,
+} = require("../middlewares/users");
 const { Authorize } = require("../middlewares/auth.js");
 
 authRouter.post("/auth/login", login);

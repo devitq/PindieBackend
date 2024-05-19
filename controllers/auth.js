@@ -35,7 +35,12 @@ const signup = async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    req.user = await users.create({ username: username, email: email, password: password, admin: false });
+    req.user = await users.create({
+      username: username,
+      email: email,
+      password: password,
+      admin: false,
+    });
   } catch {
     res.setHeader("Content-Type", "application/json");
     res
@@ -47,7 +52,7 @@ const signup = async (req, res) => {
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.user));
-}
+};
 
 const sendMe = (req, res) => {
   res.setHeader("Content-Type", "application/json");

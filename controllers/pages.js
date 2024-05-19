@@ -15,9 +15,7 @@ const sendDashboard = (req, res) => {
   if (!req.user.admin) {
     return res.redirect(`${LOGIN_PATH}/?not_admin=true`);
   }
-  return res.sendFile(
-    path.join(path.resolve(), "./pages/admin/index.html")
-  );
+  return res.sendFile(path.join(path.resolve(), "./pages/admin/index.html"));
 };
 
 module.exports = { sendLogin, sendDashboard };
