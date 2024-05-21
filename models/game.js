@@ -76,4 +76,26 @@ gameSchema.statics.vote = async function (game, user) {
   }
 };
 
+gameSchema.statics.unvote = async function (game, user) {
+  try {
+    const userExists = game.users.some((targetUser) =>
+      targetUser._id.equals(user._id)
+    );
+
+    if (userExists) {
+      game.users.pull(user._id);
+      await game.save();
+      return {
+        success: true,
+      };
+    } else {
+      return { success: true };
+    }
+  } catch {
+    return {
+      success: false,
+    };
+  }
+};
+
 module.exports = mongoose.model("game", gameSchema);

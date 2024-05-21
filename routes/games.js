@@ -15,6 +15,7 @@ const {
   checkIfCategoriesAvaliable,
   checkIsGameExists,
   voteGame,
+  unvoteGame,
 } = require("../middlewares/games");
 const {
   sendGameCreated,
@@ -59,5 +60,6 @@ gamesRouter.delete(
   sendGameDeleted
 );
 gamesRouter.post("/games/:id/vote", Authorize, voteGame, sendVoteResult);
+gamesRouter.post("/games/:id/unvote", Authorize, unvoteGame, sendVoteResult);
 
 module.exports = gamesRouter;
