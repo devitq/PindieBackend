@@ -34,7 +34,8 @@ form &&
 const logoutButton = document.querySelector(".logout-button");
 logoutButton &&
   logoutButton.addEventListener("click", async () => {
-    document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/admin;";
+    document.cookie =
+      "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/admin;";
     window.location.href = "/admin/login";
   });
 
