@@ -23,7 +23,7 @@ form &&
         return;
       }
 
-      document.cookie = `jwt=${result.jwt}; path=/;`;
+      document.cookie = `jwt=${result.jwt}; path=/admin;`;
       window.location.href = "/admin";
     } catch (error) {
       showTooltip(error.message);
@@ -34,7 +34,7 @@ form &&
 const logoutButton = document.querySelector(".logout-button");
 logoutButton &&
   logoutButton.addEventListener("click", async () => {
-    document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/admin;";
     window.location.href = "/admin/login";
   });
 
