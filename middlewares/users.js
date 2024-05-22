@@ -87,16 +87,29 @@ const checkEmptyNameAndEmail = async (req, res, next) => {
 };
 
 const checkIsUserExists = async (req, res, next) => {
-  const isInArray = req.usersArray.find((user) => {
+  const isEmailInArray = req.usersArray.find((user) => {
     return (
       req.body.email === user.email && user._id.toString() !== req.params.id
     );
   });
-  if (isInArray) {
+  const isUsernameInArray = req.usersArray.find((user) => {
+    return (
+      req.body.username === user.username &&
+      user._id.toString() !== req.params.id
+    );
+  });
+  if (isEmailInArray) {
     res.setHeader("Content-Type", "application/json");
     res.status(400).send(
       JSON.stringify({
         message: "Пользователь с таким email уже существует",
+      })
+    );
+  } else if (isUsernameInArray) {
+    res.setHeader("Content-Type", "application/json");
+    res.status(400).send(
+      JSON.stringify({
+        message: "Пользователь с таким именем уже существует",
       })
     );
   } else {
