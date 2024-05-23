@@ -87,12 +87,12 @@ const checkEmptyNameAndEmail = async (req, res, next) => {
 };
 
 const validateUsername = async (req, res, next) => {
-  const pattern = /^[a-zA-Z0-9]+$/;
+  const pattern = /^[0-9A-Za-z]{4,32}$/;
   if (!pattern.test(req.body.username)) {
     res.setHeader("Content-Type", "application/json");
     res
       .status(400)
-      .send(JSON.stringify({ message: "Недопустимые символы в имени" }));
+      .send(JSON.stringify({ message: "Неправильный формат имени" }));
   } else {
     next();
   }
@@ -104,7 +104,7 @@ const validateEmail = async (req, res, next) => {
     res.setHeader("Content-Type", "application/json");
     res
       .status(400)
-      .send(JSON.stringify({ message: "Недопустимые символы в email" }));
+      .send(JSON.stringify({ message: "Неправильный формат email" }));
   } else {
     next();
   }
