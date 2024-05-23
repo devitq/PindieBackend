@@ -87,7 +87,7 @@ const checkEmptyNameAndEmail = async (req, res, next) => {
 };
 
 const validateUsername = async (req, res, next) => {
-  const pattern = /^[0-9A-Za-z]{4,32}$/;
+  const pattern = /^[0-9A-Za-z]{3,32}$/;
   if (!pattern.test(req.body.username)) {
     res.setHeader("Content-Type", "application/json");
     res
