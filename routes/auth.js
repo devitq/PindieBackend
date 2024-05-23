@@ -7,6 +7,8 @@ const {
   findAllUsers,
   hashPassword,
   checkEmptyNameAndEmailAndPassword,
+  validateUsername,
+  validateEmail,
   checkIsUserExists,
 } = require("../middlewares/users");
 const { Authorize } = require("../middlewares/auth.js");
@@ -15,6 +17,8 @@ authRouter.post("/auth/login", login);
 authRouter.post(
   "/auth/signup",
   checkEmptyNameAndEmailAndPassword,
+  validateUsername,
+  validateEmail,
   hashPassword,
   findAllUsers,
   checkIsUserExists,

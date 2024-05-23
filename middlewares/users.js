@@ -86,30 +86,54 @@ const checkEmptyNameAndEmail = async (req, res, next) => {
   }
 };
 
+const validateUsername = async (req, res, next) => {
+  const pattern = /^[a-zA-Z0-9]+$/;
+  if (!pattern.test(req.body.username)) {
+    res.setHeader("Content-Type", "application/json");
+    res
+      .status(400)
+      .send(JSON.stringify({ message: "Недопустимые символы в имени" }));
+  } else {
+    next();
+  }
+};
+
+const validateEmail = async (req, res, next) => {
+  const pattern = /^\S+@\S+\.\S+$/;
+  if (!pattern.test(req.body.email)) {
+    res.setHeader("Content-Type", "application/json");
+    res
+      .status(400)
+      .send(JSON.stringify({ message: "Недопустимые символы в email" }));
+  } else {
+    next();
+  }
+};
+
 const checkIsUserExists = async (req, res, next) => {
-  const isEmailInArray = req.usersArray.find((user) => {
-    return (
-      req.body.email === user.email && user._id.toString() !== req.params.id
-    );
-  });
   const isUsernameInArray = req.usersArray.find((user) => {
     return (
       req.body.username === user.username &&
       user._id.toString() !== req.params.id
     );
   });
-  if (isEmailInArray) {
-    res.setHeader("Content-Type", "application/json");
-    res.status(400).send(
-      JSON.stringify({
-        message: "Пользователь с таким email уже существует",
-      })
+  const isEmailInArray = req.usersArray.find((user) => {
+    return (
+      req.body.email === user.email && user._id.toString() !== req.params.id
     );
-  } else if (isUsernameInArray) {
+  });
+  if (isUsernameInArray) {
     res.setHeader("Content-Type", "application/json");
     res.status(400).send(
       JSON.stringify({
         message: "Пользователь с таким именем уже существует",
+      })
+    );
+  } else if (isEmailInArray) {
+    res.setHeader("Content-Type", "application/json");
+    res.status(400).send(
+      JSON.stringify({
+        message: "Пользователь с таким email уже существует",
       })
     );
   } else {
@@ -126,5 +150,7 @@ module.exports = {
   hashPassword,
   checkEmptyNameAndEmailAndPassword,
   checkEmptyNameAndEmail,
+  validateUsername,
+  validateEmail,
   checkIsUserExists,
 };
